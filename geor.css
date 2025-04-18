@@ -1,80 +1,73 @@
-/* Reset para móvil */
-* {
+/* Estilos base (igual para ambos) */
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
     background-color: #000;
-    font-family: 'Rock Salt', cursive;
-    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    font-family: 'Rock Salt', cursive;
     overflow: hidden;
 }
 
-.mobile-container {
-    width: 100%;
-    padding: 20px;
+.stage {
+    position: relative;
     text-align: center;
+    width: 100%;
+    z-index: 1;
 }
 
-.mobile-title {
+/* Texto neón (ajustado para móvil) */
+.neon-rock {
     color: #ff00ff;
-    font-size: 2rem;
-    text-shadow:
+    font-size: 2.5rem; /* Más pequeño que en desktop */
+    text-shadow: 
         0 0 5px #ff00ff,
-        0 0 10px #ff0000;
-    margin-bottom: 30px;
-    animation: flicker 2s infinite alternate;
+        0 0 10px #ff00ff,
+        0 0 15px #ff0000;
+    animation: flicker 1.5s infinite alternate;
+    margin: 20px 0;
+    padding: 0 10px; /* Evita que toque los bordes */
 }
 
-.mobile-icons {
+/* Contenedor de íconos (alineación horizontal) */
+.icons-container {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 25px;
+    gap: 20px; /* Espacio entre íconos */
+    margin-top: 20px;
 }
 
-.mobile-icon {
-    font-size: 3rem;
-    animation: pulse 1.5s infinite alternate;
+/* Íconos (tamaño reducido) */
+.rock-hand, .guitar, .burning-heart {
+    font-size: 2.5rem;
+    animation: none; /* Desactiva animaciones complejas en móvil */
 }
 
-.hand {
-    color: #fff;
-    text-shadow: 0 0 10px #ff0000;
+.burning-heart {
+    animation: heart-burn 1.5s infinite alternate !important; /* Solo animación ligera */
 }
 
-.heart {
-    color: #ff0000;
-    text-shadow: 0 0 15px #ff4500;
-    animation: heart-burn 1s infinite alternate !important;
-}
-
-.guitar {
-    color: #fff;
-    text-shadow: 0 0 10px #ff00ff;
+/* Spotlight (más tenue para móvil) */
+.spotlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 30%, rgba(255, 0, 0, 0.1) 70%);
+    z-index: -1;
 }
 
 /* Animaciones simplificadas */
 @keyframes flicker {
-    0%, 100% { opacity: 0.8; }
+    0%, 100% { opacity: 0.9; }
     50% { opacity: 1; }
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); }
-    100% { transform: scale(1.2); }
 }
 
 @keyframes heart-burn {
     0% { transform: scale(1); opacity: 0.7; }
-    100% { transform: scale(1.3); opacity: 1; }
-}
-
-body {
-  font-family: 'Brush Script MT', cursive;
+    100% { transform: scale(1.2); opacity: 1; }
 }
